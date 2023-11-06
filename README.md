@@ -1,2 +1,0 @@
-# Movie-project
-Movie Maniac 
