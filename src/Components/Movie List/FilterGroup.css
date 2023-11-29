@@ -1,0 +1,20 @@
+@media screen and (max-width:620px){
+    span{
+        display: none;
+    } 
+    .movie_filter_item{
+        padding: -4px 10px;
+    } 
+    .movie_filter{
+        width: 140px;
+    }
+    .align_center{
+        justify-content: space-between;
+    }
+    .movie_list_heading{
+        display: flex;
+        align-items: center;
+
+    }
+   
+}

@@ -1,0 +1,39 @@
+.container{
+ width: auto;
+ height: auto;
+ display: flex;
+ align-items: center;
+justify-content: center;
+}
+.button{
+    width: 60px;
+    height: 30px;
+    border-radius: 200px; 
+    background-color: #cdcdcd;
+    cursor: pointer; 
+    position: relative;
+} 
+.button::before{
+    position: absolute; 
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: white; 
+    border-radius: 100px; 
+     transition: all 0.2s; 
+     background-image:url('/flag-of-saudi-arabia-national-flag-king-of-saudi-arabia-png-favpng-wXqEqHcwq41fnyyzjU46Xa1Wt-modified.png');
+    background-size: cover; 
+    background-position: center; 
+    transform: scale(1.1);
+
+
+} 
+input:checked + .button {
+    background-color: blueviolet;
+} 
+input:checked + .button::before{
+    transform: translateX(31px);
+} 
+input{
+    display: none;
+} 

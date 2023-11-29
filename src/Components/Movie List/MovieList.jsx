@@ -5,7 +5,7 @@ import './MovieList.css'                          // Components
 import Fire from "../../assets/fire.png"
 import MovieCard from './MovieCard'
 import FilterGroup from './FilterGroup'
-const MovieList = () => {  
+const MovieList = ({apptog,setapptog,type,title,emoji,icon}) => {  
     const [movies, setMovies] = useState([]) 
     const [minRating, setminRating] = useState(0) 
     const [filterMovies, setfilterMovies] = useState([]) 
@@ -28,7 +28,7 @@ const MovieList = () => {
     },[sort])
 
     const fetchMovies = async () =>{
-       const response= await fetch("https://api.themoviedb.org/3/movie/popular?api_key=84dd094d2b5a54706cb451f5be62f113") 
+       const response= await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=84dd094d2b5a54706cb451f5be62f113`) 
        const data = await response.json() 
       setMovies(data.results) 
       setfilterMovies(data.results)
@@ -55,9 +55,11 @@ const MovieList = () => {
     }  
    
   return (
-    <section className='movie_list'>
-        <header className=' align_center movie_list_header'>
-            <h2 className='movie_list_heading'> Popular <img src={Fire} alt="fire emoji" className='navbar_emoji' /></h2>
+    <section className='movie_list' id={type}>
+        
+        <header className= {` align_center movie_list_header ${apptog?'active':''}`}> 
+        <h2 className='movie_list_heading'> {title} <img src={emoji} alt={`${emoji} icon`} className='navbar_emoji' /></h2>
+           
             <div className=" align_center movie_list_fs">
                  <FilterGroup minRating={minRating} onRatingClick={handleFilter} ratings={[6,7, 8]} />
                 <select name="by" id="" onChange={handleSort} value={sort.by} className="movie_sorting">
@@ -70,11 +72,12 @@ const MovieList = () => {
                     <option value="asc"> Ascending </option>
                     <option value="desc"> Descending </option>
                 </select>
-            </div>
+            </div> 
+            
         </header> 
         <div className="movie_cards">
            {
-             filterMovies.map(movie=> <MovieCard key={movie.id} movie={movie}/>)
+             filterMovies.map(movie=> <MovieCard key={movie.id} movie={movie} apptog={apptog}/>)
            }
         </div>
     </section>
