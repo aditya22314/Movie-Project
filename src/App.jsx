@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./App.css";
-import Navbar from "./Components/Navbar/navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import MovieList from "./Components/Movie List/MovieList";
 // import Arabic from "./Components/DarkMode/Arabic"; 
 import Fire from './assets/fire.png' 
